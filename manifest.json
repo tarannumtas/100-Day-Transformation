@@ -1,0 +1,17 @@
+{
+  "name": "100 Day Transformation",
+  "short_name": "Transform",
+  "description": "Personal 100-day spiritual, physical & nutritional tracker",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#faf6f2",
+  "theme_color": "#3d2c2c",
+  "orientation": "portrait",
+  "scope": "./",
+  "icons": [
+    { "src": "icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "lang": "en"
+}
