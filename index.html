@@ -14,7 +14,10 @@
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <title>100 Day Transformation</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html,body,#root{min-height:100vh;min-height:100dvh;background:#faf6f2;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
@@ -24,7 +27,7 @@
   @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
-  .mo{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;display:flex;align-items:center;justify-content:center;animation:fadeIn 0.2s;backdrop-filter:blur(4px);padding:16px}
+  .mo{position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,0.4);z-index:100;display:flex;align-items:center;justify-content:center;animation:fadeIn 0.2s;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:16px}
   .md{background:white;border-radius:26px;padding:26px;max-width:430px;width:100%;max-height:85vh;max-height:85dvh;overflow-y:auto;animation:slideUp 0.3s;-webkit-overflow-scrolling:touch}
   .inp{width:100%;padding:12px 15px;border:2px solid #eee;border-radius:13px;font-size:16px;outline:none;transition:border-color 0.2s;-webkit-appearance:none;appearance:none}.inp:focus{border-color:#c97b63}
   .bp{background:linear-gradient(135deg,#c97b63,#b5654d);color:white;border:none;padding:11px 22px;border-radius:13px;font-size:13.5px;font-weight:600;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent}.bp:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(201,123,99,0.3)}.bp:active{transform:scale(0.97)}.bp:disabled{opacity:0.5;cursor:not-allowed;transform:none}
@@ -716,12 +719,16 @@ const getToday = () => {
   const d = new Date();
   return "".concat(d.getFullYear(), "-").concat(String(d.getMonth() + 1).padStart(2, '0'), "-").concat(String(d.getDate()).padStart(2, '0'));
 };
+const parseLocalDate = str => {
+  if (!str) return new Date(NaN);
+  const parts = str.split('-');
+  return new Date(+parts[0], +parts[1] - 1, +parts[2]);
+};
 const getDayNum = startStr => {
   if (!startStr) return 0;
   const t = new Date();
   t.setHours(0, 0, 0, 0);
-  const s = new Date(startStr);
-  s.setHours(0, 0, 0, 0);
+  const s = parseLocalDate(startStr);
   if (isNaN(s)) return 0;
   return Math.max(0, Math.min(Math.floor((t - s) / 864e5) + 1, 100));
 };
@@ -729,8 +736,7 @@ const getDaysLeft = startStr => {
   if (!startStr) return 100;
   const t = new Date();
   t.setHours(0, 0, 0, 0);
-  const s = new Date(startStr);
-  s.setHours(0, 0, 0, 0);
+  const s = parseLocalDate(startStr);
   if (isNaN(s)) return 100;
   const e = new Date(s);
   e.setDate(e.getDate() + 99);
@@ -738,7 +744,7 @@ const getDaysLeft = startStr => {
 };
 const getEndDate = startStr => {
   if (!startStr) return null;
-  const s = new Date(startStr);
+  const s = parseLocalDate(startStr);
   if (isNaN(s)) return null;
   s.setDate(s.getDate() + 99);
   return s;
@@ -1578,7 +1584,7 @@ function App() {
       fontSize: 12.5,
       marginTop: 3
     }
-  }, profile.startDate ? dayNum === 0 ? "Starts " + new Date(profile.startDate).toLocaleDateString('en-GB', {
+  }, profile.startDate ? dayNum === 0 ? "Starts " + parseLocalDate(profile.startDate).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'short'
   }) : "".concat(daysLeft, " days left \u2726") : /*#__PURE__*/React.createElement("span", {
