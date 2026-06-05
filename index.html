@@ -9,7 +9,9 @@
 <meta name="apple-mobile-web-app-title" content="Transform">
 <meta name="description" content="100-Day Transformation Tracker — Spiritual, Physical & Nutritional">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png">
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <title>100 Day Transformation</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -340,15 +342,22 @@ var d=null!=c&&c.hydratedSources||null,e=!1,f="",g=aj;null!==c&&void 0!==c&&(!0=
 function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmountComponentAtNode=function(a){if(!Vd(a))throw Error(m(40));return a._reactRootContainer?(yb(function(){Wd(null,null,a,!1,function(){a._reactRootContainer=null;a[Ja]=null})}),!0):!1};Q.unstable_batchedUpdates=Tf;Q.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!Vd(c))throw Error(m(200));if(null==a||void 0===a._reactInternals)throw Error(m(38));return Wd(a,b,c,!1,d)};Q.version="18.3.1-next-f1338f8080-20240426"});
 })();
 </script>
-<!-- App (pre-compiled) -->
+<!-- App (pre-compiled for iOS Safari 12+) -->
 <script>
 try {
-const {
-  useState,
-  useEffect,
-  useCallback,
-  useRef
-} = React;
+"use strict";
+
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+const _React = React,
+  useState = _React.useState,
+  useEffect = _React.useEffect,
+  useCallback = _React.useCallback,
+  useRef = _React.useRef;
 
 // ═══ STORAGE (localStorage) ═══
 const ST = {
@@ -705,7 +714,7 @@ const MEAL_SLOTS = [{
 }];
 const getToday = () => {
   const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  return "".concat(d.getFullYear(), "-").concat(String(d.getMonth() + 1).padStart(2, '0'), "-").concat(String(d.getDate()).padStart(2, '0'));
 };
 const getDayNum = startStr => {
   if (!startStr) return 0;
@@ -765,13 +774,15 @@ const emptyDay = () => ({
 });
 
 // ═══ Components ═══
-const Ring = ({
-  progress,
-  size = 80,
-  stroke = 6,
-  color = "#c97b63",
-  children
-}) => {
+const Ring = _ref => {
+  let progress = _ref.progress,
+    _ref$size = _ref.size,
+    size = _ref$size === void 0 ? 80 : _ref$size,
+    _ref$stroke = _ref.stroke,
+    stroke = _ref$stroke === void 0 ? 6 : _ref$stroke,
+    _ref$color = _ref.color,
+    color = _ref$color === void 0 ? "#c97b63" : _ref$color,
+    children = _ref.children;
   const r = (size - stroke) / 2,
     c = 2 * Math.PI * r,
     o = c - progress / 100 * c;
@@ -825,206 +836,303 @@ const Ring = ({
     }
   }, Math.round(progress), "%")));
 };
-const Chk = ({
-  checked,
-  onChange,
-  label,
-  subtitle,
-  accent = "#c97b63",
-  right
-}) => /*#__PURE__*/React.createElement("button", {
-  onClick: onChange,
-  style: {
-    display: "flex",
-    alignItems: "center",
-    gap: 11,
-    padding: "12px 14px",
-    borderRadius: 15,
-    border: "none",
-    background: checked ? `${accent}12` : "rgba(0,0,0,0.02)",
-    cursor: "pointer",
-    width: "100%",
-    textAlign: "left",
-    transition: "all 0.3s",
-    outline: checked ? `2px solid ${accent}40` : "2px solid transparent",
-    WebkitTapHighlightColor: "transparent"
-  }
-}, /*#__PURE__*/React.createElement("div", {
-  style: {
-    width: 26,
-    height: 26,
-    borderRadius: 8,
-    border: checked ? "none" : "2px solid #ccc",
-    background: checked ? accent : "white",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    transition: "all 0.3s",
-    flexShrink: 0
-  }
-}, checked && /*#__PURE__*/React.createElement("svg", {
-  width: "14",
-  height: "14",
-  viewBox: "0 0 16 16",
-  fill: "none"
-}, /*#__PURE__*/React.createElement("path", {
-  d: "M3 8.5L6.5 12L13 4",
-  stroke: "white",
-  strokeWidth: "2.5",
-  strokeLinecap: "round",
-  strokeLinejoin: "round"
-}))), /*#__PURE__*/React.createElement("div", {
-  style: {
-    flex: 1,
-    minWidth: 0
-  }
-}, /*#__PURE__*/React.createElement("div", {
-  style: {
-    fontSize: 14,
-    fontWeight: 600,
-    color: checked ? accent : "#3d2c2c",
-    textDecoration: checked ? "line-through" : "none",
-    opacity: checked ? .7 : 1
-  }
-}, label), subtitle && /*#__PURE__*/React.createElement("div", {
-  style: {
-    fontSize: 11.5,
-    color: "#999",
-    marginTop: 1
-  }
-}, subtitle)), right);
-const Card = ({
-  title,
-  icon,
-  children,
-  extra
-}) => /*#__PURE__*/React.createElement("div", {
-  style: {
-    background: "white",
-    borderRadius: 22,
-    padding: "22px 20px",
-    boxShadow: "0 2px 18px rgba(0,0,0,0.04)",
-    border: "1px solid rgba(0,0,0,0.04)"
-  }
-}, /*#__PURE__*/React.createElement("div", {
-  style: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: 16
-  }
-}, /*#__PURE__*/React.createElement("div", {
-  style: {
-    display: "flex",
-    alignItems: "center",
-    gap: 9
-  }
-}, /*#__PURE__*/React.createElement("span", {
-  style: {
-    fontSize: 19
-  }
-}, icon), /*#__PURE__*/React.createElement("h3", {
-  style: {
-    margin: 0,
-    fontSize: 16,
-    fontWeight: 700,
-    color: "#3d2c2c",
-    fontFamily: "'Playfair Display'"
-  }
-}, title)), extra), children);
-const Pill = ({
-  active,
-  onClick,
-  children,
-  color = "#c97b63"
-}) => /*#__PURE__*/React.createElement("button", {
-  onClick: onClick,
-  style: {
-    padding: "8px 15px",
-    borderRadius: 20,
-    border: "none",
-    cursor: "pointer",
-    background: active ? color : "rgba(0,0,0,0.04)",
-    color: active ? "white" : "#888",
-    fontSize: 12.5,
-    fontWeight: 600,
-    transition: "all 0.2s",
-    whiteSpace: "nowrap",
-    WebkitTapHighlightColor: "transparent"
-  }
-}, children);
-const Modal = ({
-  onClose,
-  title,
-  children
-}) => /*#__PURE__*/React.createElement("div", {
-  className: "mo",
-  onClick: onClose
-}, /*#__PURE__*/React.createElement("div", {
-  className: "md",
-  onClick: e => e.stopPropagation()
-}, /*#__PURE__*/React.createElement("h3", {
-  style: {
-    fontFamily: "'Playfair Display'",
-    fontSize: 20,
-    marginBottom: 18,
-    color: "#3d2c2c"
-  }
-}, title), children));
+const Chk = _ref2 => {
+  let checked = _ref2.checked,
+    onChange = _ref2.onChange,
+    label = _ref2.label,
+    subtitle = _ref2.subtitle,
+    _ref2$accent = _ref2.accent,
+    accent = _ref2$accent === void 0 ? "#c97b63" : _ref2$accent,
+    right = _ref2.right;
+  return /*#__PURE__*/React.createElement("button", {
+    onClick: onChange,
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 11,
+      padding: "12px 14px",
+      borderRadius: 15,
+      border: "none",
+      background: checked ? "".concat(accent, "12") : "rgba(0,0,0,0.02)",
+      cursor: "pointer",
+      width: "100%",
+      textAlign: "left",
+      transition: "all 0.3s",
+      outline: checked ? "2px solid ".concat(accent, "40") : "2px solid transparent",
+      WebkitTapHighlightColor: "transparent"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 26,
+      height: 26,
+      borderRadius: 8,
+      border: checked ? "none" : "2px solid #ccc",
+      background: checked ? accent : "white",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      transition: "all 0.3s",
+      flexShrink: 0
+    }
+  }, checked && /*#__PURE__*/React.createElement("svg", {
+    width: "14",
+    height: "14",
+    viewBox: "0 0 16 16",
+    fill: "none"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M3 8.5L6.5 12L13 4",
+    stroke: "white",
+    strokeWidth: "2.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      minWidth: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 14,
+      fontWeight: 600,
+      color: checked ? accent : "#3d2c2c",
+      textDecoration: checked ? "line-through" : "none",
+      opacity: checked ? .7 : 1
+    }
+  }, label), subtitle && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11.5,
+      color: "#999",
+      marginTop: 1
+    }
+  }, subtitle)), right);
+};
+const Card = _ref3 => {
+  let title = _ref3.title,
+    icon = _ref3.icon,
+    children = _ref3.children,
+    extra = _ref3.extra;
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "white",
+      borderRadius: 22,
+      padding: "22px 20px",
+      boxShadow: "0 2px 18px rgba(0,0,0,0.04)",
+      border: "1px solid rgba(0,0,0,0.04)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      marginBottom: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 9
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 19
+    }
+  }, icon), /*#__PURE__*/React.createElement("h3", {
+    style: {
+      margin: 0,
+      fontSize: 16,
+      fontWeight: 700,
+      color: "#3d2c2c",
+      fontFamily: "'Playfair Display'"
+    }
+  }, title)), extra), children);
+};
+const Pill = _ref4 => {
+  let active = _ref4.active,
+    onClick = _ref4.onClick,
+    children = _ref4.children,
+    _ref4$color = _ref4.color,
+    color = _ref4$color === void 0 ? "#c97b63" : _ref4$color;
+  return /*#__PURE__*/React.createElement("button", {
+    onClick: onClick,
+    style: {
+      padding: "8px 15px",
+      borderRadius: 20,
+      border: "none",
+      cursor: "pointer",
+      background: active ? color : "rgba(0,0,0,0.04)",
+      color: active ? "white" : "#888",
+      fontSize: 12.5,
+      fontWeight: 600,
+      transition: "all 0.2s",
+      whiteSpace: "nowrap",
+      WebkitTapHighlightColor: "transparent"
+    }
+  }, children);
+};
+const Modal = _ref5 => {
+  let onClose = _ref5.onClose,
+    title = _ref5.title,
+    children = _ref5.children;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "mo",
+    onClick: onClose
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "md",
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontFamily: "'Playfair Display'",
+      fontSize: 20,
+      marginBottom: 18,
+      color: "#3d2c2c"
+    }
+  }, title), children));
+};
 
 // ═══ MAIN APP ═══
 function App() {
-  const [tab, setTab] = useState("dashboard");
-  const [dayData, setDayData] = useState(emptyDay());
-  const [profile, setProfile] = useState({
-    startWeight: 0,
-    goalWeight: 0,
-    stepGoal: 8000,
-    apiKey: "",
-    startDate: ""
-  });
-  const [weightLog, setWeightLog] = useState([]);
-  const [checkups, setCheckups] = useState([]);
-  const [allDays, setAllDays] = useState({});
-  const [myRoutine, setMyRoutine] = useState(DEFAULT_ROUTINE);
-  const [removedEx, setRemovedEx] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [mealModal, setMealModal] = useState(null);
-  const [mealInput, setMI] = useState({
-    name: "",
-    calories: "",
-    notes: ""
-  });
-  const [photoAnalyzing, setPA] = useState(false);
-  const [photoResult, setPR] = useState(null);
-  const [wInput, setWI] = useState("");
-  const [stepInput, setSI] = useState("");
-  const [checkupModal, setCM] = useState(false);
-  const [checkupInput, setCI] = useState({
-    date: getToday(),
-    weight: "",
-    bp: "",
-    sugar: "",
-    period: false,
-    notes: ""
-  });
-  const [profileModal, setPM] = useState(false);
-  const [workSub, setWS] = useState("routine");
-  const [libCat, setLC] = useState("strength");
-  const [editTgt, setET] = useState(null);
-  const [editTgtVal, setETV] = useState("");
-  const [addExModal, setAEM] = useState(false);
-  const [customExModal, setCEM] = useState(false);
-  const [customEx, setCE] = useState({
-    name: "",
-    target: "",
-    icon: "🏋️"
-  });
-  const [recipeInput, setRI] = useState("");
-  const [recipeResult, setRR] = useState(null);
-  const [recipeLoading, setRL] = useState(false);
-  const [challenge, setChallenge] = useState(null);
-  const [showInstall, setShowInstall] = useState(false);
+  var _recipeResult$recipes, _checkups$filter$slic, _MEAL_SLOTS$find, _photoResult$items;
+  const _useState = useState("dashboard"),
+    _useState2 = _slicedToArray(_useState, 2),
+    tab = _useState2[0],
+    setTab = _useState2[1];
+  const _useState3 = useState(emptyDay()),
+    _useState4 = _slicedToArray(_useState3, 2),
+    dayData = _useState4[0],
+    setDayData = _useState4[1];
+  const _useState5 = useState({
+      startWeight: 0,
+      goalWeight: 0,
+      stepGoal: 8000,
+      apiKey: "",
+      startDate: ""
+    }),
+    _useState6 = _slicedToArray(_useState5, 2),
+    profile = _useState6[0],
+    setProfile = _useState6[1];
+  const _useState7 = useState([]),
+    _useState8 = _slicedToArray(_useState7, 2),
+    weightLog = _useState8[0],
+    setWeightLog = _useState8[1];
+  const _useState9 = useState([]),
+    _useState0 = _slicedToArray(_useState9, 2),
+    checkups = _useState0[0],
+    setCheckups = _useState0[1];
+  const _useState1 = useState({}),
+    _useState10 = _slicedToArray(_useState1, 2),
+    allDays = _useState10[0],
+    setAllDays = _useState10[1];
+  const _useState11 = useState(DEFAULT_ROUTINE),
+    _useState12 = _slicedToArray(_useState11, 2),
+    myRoutine = _useState12[0],
+    setMyRoutine = _useState12[1];
+  const _useState13 = useState([]),
+    _useState14 = _slicedToArray(_useState13, 2),
+    removedEx = _useState14[0],
+    setRemovedEx = _useState14[1];
+  const _useState15 = useState(true),
+    _useState16 = _slicedToArray(_useState15, 2),
+    loading = _useState16[0],
+    setLoading = _useState16[1];
+  const _useState17 = useState(null),
+    _useState18 = _slicedToArray(_useState17, 2),
+    mealModal = _useState18[0],
+    setMealModal = _useState18[1];
+  const _useState19 = useState({
+      name: "",
+      calories: "",
+      notes: ""
+    }),
+    _useState20 = _slicedToArray(_useState19, 2),
+    mealInput = _useState20[0],
+    setMI = _useState20[1];
+  const _useState21 = useState(false),
+    _useState22 = _slicedToArray(_useState21, 2),
+    photoAnalyzing = _useState22[0],
+    setPA = _useState22[1];
+  const _useState23 = useState(null),
+    _useState24 = _slicedToArray(_useState23, 2),
+    photoResult = _useState24[0],
+    setPR = _useState24[1];
+  const _useState25 = useState(""),
+    _useState26 = _slicedToArray(_useState25, 2),
+    wInput = _useState26[0],
+    setWI = _useState26[1];
+  const _useState27 = useState(""),
+    _useState28 = _slicedToArray(_useState27, 2),
+    stepInput = _useState28[0],
+    setSI = _useState28[1];
+  const _useState29 = useState(false),
+    _useState30 = _slicedToArray(_useState29, 2),
+    checkupModal = _useState30[0],
+    setCM = _useState30[1];
+  const _useState31 = useState({
+      date: getToday(),
+      weight: "",
+      bp: "",
+      sugar: "",
+      period: false,
+      notes: ""
+    }),
+    _useState32 = _slicedToArray(_useState31, 2),
+    checkupInput = _useState32[0],
+    setCI = _useState32[1];
+  const _useState33 = useState(false),
+    _useState34 = _slicedToArray(_useState33, 2),
+    profileModal = _useState34[0],
+    setPM = _useState34[1];
+  const _useState35 = useState("routine"),
+    _useState36 = _slicedToArray(_useState35, 2),
+    workSub = _useState36[0],
+    setWS = _useState36[1];
+  const _useState37 = useState("strength"),
+    _useState38 = _slicedToArray(_useState37, 2),
+    libCat = _useState38[0],
+    setLC = _useState38[1];
+  const _useState39 = useState(null),
+    _useState40 = _slicedToArray(_useState39, 2),
+    editTgt = _useState40[0],
+    setET = _useState40[1];
+  const _useState41 = useState(""),
+    _useState42 = _slicedToArray(_useState41, 2),
+    editTgtVal = _useState42[0],
+    setETV = _useState42[1];
+  const _useState43 = useState(false),
+    _useState44 = _slicedToArray(_useState43, 2),
+    addExModal = _useState44[0],
+    setAEM = _useState44[1];
+  const _useState45 = useState(false),
+    _useState46 = _slicedToArray(_useState45, 2),
+    customExModal = _useState46[0],
+    setCEM = _useState46[1];
+  const _useState47 = useState({
+      name: "",
+      target: "",
+      icon: "🏋️"
+    }),
+    _useState48 = _slicedToArray(_useState47, 2),
+    customEx = _useState48[0],
+    setCE = _useState48[1];
+  const _useState49 = useState(""),
+    _useState50 = _slicedToArray(_useState49, 2),
+    recipeInput = _useState50[0],
+    setRI = _useState50[1];
+  const _useState51 = useState(null),
+    _useState52 = _slicedToArray(_useState51, 2),
+    recipeResult = _useState52[0],
+    setRR = _useState52[1];
+  const _useState53 = useState(false),
+    _useState54 = _slicedToArray(_useState53, 2),
+    recipeLoading = _useState54[0],
+    setRL = _useState54[1];
+  const _useState55 = useState(null),
+    _useState56 = _slicedToArray(_useState55, 2),
+    challenge = _useState56[0],
+    setChallenge = _useState56[1];
+  const _useState57 = useState(false),
+    _useState58 = _slicedToArray(_useState57, 2),
+    showInstall = _useState58[0],
+    setShowInstall = _useState58[1];
   const deferredPrompt = useRef(null);
   const fileRef = useRef(null);
   const importRef = useRef(null);
@@ -1057,7 +1165,7 @@ function App() {
   useEffect(() => {
     const p = ST.g("tf-profile");
     if (p) setProfile(p);
-    const d = ST.g(`tf-day-${today}`);
+    const d = ST.g("tf-day-".concat(today));
     if (d) setDayData(d);
     const w = ST.g("tf-weights");
     if (w) setWeightLog(w);
@@ -1079,7 +1187,7 @@ function App() {
       ...nd
     };
     setDayData(d);
-    ST.s(`tf-day-${today}`, d);
+    ST.s("tf-day-".concat(today), d);
     const na = {
       ...allDays,
       [today]: d
@@ -1138,7 +1246,9 @@ function App() {
     const nr = [...myRoutine];
     const ni = idx + dir;
     if (ni < 0 || ni >= nr.length) return;
-    [nr[idx], nr[ni]] = [nr[ni], nr[idx]];
+    var _ref6 = [nr[ni], nr[idx]];
+    nr[idx] = _ref6[0];
+    nr[ni] = _ref6[1];
     saveRoutine(nr);
   };
   const addMeal = slotId => {
@@ -1198,7 +1308,7 @@ function App() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `transform-backup-${getToday()}.json`;
+    a.download = "transform-backup-".concat(getToday(), ".json");
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -1255,6 +1365,7 @@ function App() {
     setPA(true);
     setPR(null);
     try {
+      var _data$content;
       const b64 = await new Promise((res, rej) => {
         const r = new FileReader();
         r.onload = () => res(r.result.split(",")[1]);
@@ -1289,7 +1400,7 @@ function App() {
         })
       });
       const data = await resp.json();
-      const text = data.content?.map(i => i.text || "").join("") || "";
+      const text = ((_data$content = data.content) === null || _data$content === void 0 ? void 0 : _data$content.map(i => i.text || "").join("")) || "";
       const parsed = JSON.parse(text.replace(/```json|```/g, "").trim());
       setPR(parsed);
       setMI(p => ({
@@ -1316,6 +1427,7 @@ function App() {
     setRL(true);
     setRR(null);
     try {
+      var _data$content2;
       const resp = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
         headers: {
@@ -1329,12 +1441,12 @@ function App() {
           max_tokens: 1000,
           messages: [{
             role: "user",
-            content: `I have: ${recipeInput}\n\nI'm a Bangladeshi woman, prediabetic, have PCOS and insulin resistance. Need LOW CALORIE, LOW SUGAR, HIGH PROTEIN Bangladeshi meals.\n\nGive 2-3 meals with step-by-step. ONLY JSON: {"recipes":[{"name":"...","calories":number,"protein":"Xg","prep_time":"X min","steps":["..."],"ingredients_used":["..."],"tip":"..."}]}`
+            content: "I have: ".concat(recipeInput, "\n\nI'm a Bangladeshi woman, prediabetic, have PCOS and insulin resistance. Need LOW CALORIE, LOW SUGAR, HIGH PROTEIN Bangladeshi meals.\n\nGive 2-3 meals with step-by-step. ONLY JSON: {\"recipes\":[{\"name\":\"...\",\"calories\":number,\"protein\":\"Xg\",\"prep_time\":\"X min\",\"steps\":[\"...\"],\"ingredients_used\":[\"...\"],\"tip\":\"...\"}]}")
           }]
         })
       });
       const data = await resp.json();
-      const text = data.content?.map(i => i.text || "").join("") || "";
+      const text = ((_data$content2 = data.content) === null || _data$content2 === void 0 ? void 0 : _data$content2.map(i => i.text || "").join("")) || "";
       setRR(JSON.parse(text.replace(/```json|```/g, "").trim()));
     } catch {
       setRR({
@@ -1347,8 +1459,8 @@ function App() {
   // Stats
   const pDone = Object.values(dayData.prayers).filter(Boolean).length;
   const wDone = myRoutine.filter(r => dayData.workouts[r.id]).length;
-  const mDone = Object.values(dayData.meals).filter(m => m?.logged).length;
-  const tCal = Object.values(dayData.meals).reduce((s, m) => s + (parseInt(m?.calories) || 0), 0);
+  const mDone = Object.values(dayData.meals).filter(m => m === null || m === void 0 ? void 0 : m.logged).length;
+  const tCal = Object.values(dayData.meals).reduce((s, m) => s + (parseInt(m === null || m === void 0 ? void 0 : m.calories) || 0), 0);
   const spScore = Math.round(pDone / 5 * 60 + (dayData.quran ? 25 : 0) + (dayData.religiousLearning ? 15 : 0));
   const phScore = myRoutine.length ? Math.round(wDone / myRoutine.length * 100) : 0;
   const diScore = Math.round(mDone / MEAL_SLOTS.length * 100);
@@ -1469,7 +1581,7 @@ function App() {
   }, profile.startDate ? dayNum === 0 ? "Starts " + new Date(profile.startDate).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'short'
-  }) : `${daysLeft} days left ✦` : /*#__PURE__*/React.createElement("span", {
+  }) : "".concat(daysLeft, " days left \u2726") : /*#__PURE__*/React.createElement("span", {
     onClick: () => setPM(true),
     style: {
       cursor: "pointer",
@@ -1521,7 +1633,7 @@ function App() {
     style: {
       height: "100%",
       borderRadius: 10,
-      width: `${dayNum}%`,
+      width: "".concat(dayNum, "%"),
       background: "linear-gradient(90deg,#f5c6b0,#fff)",
       transition: "width 1s"
     }
@@ -1722,7 +1834,7 @@ function App() {
       color: wLost > 0 ? "#7b9e6b" : "#999",
       fontWeight: 600
     }
-  }, wLost > 0 ? `↓ ${wLost.toFixed(1)} kg lost` : latW ? "Log weekly to track!" : "Log your first weigh-in!")), /*#__PURE__*/React.createElement("div", {
+  }, wLost > 0 ? "\u2193 ".concat(wLost.toFixed(1), " kg lost") : latW ? "Log weekly to track!" : "Log your first weigh-in!")), /*#__PURE__*/React.createElement("div", {
     style: {
       textAlign: "right"
     }
@@ -1749,7 +1861,7 @@ function App() {
     style: {
       height: "100%",
       borderRadius: 10,
-      width: `${wProg}%`,
+      width: "".concat(wProg, "%"),
       background: "linear-gradient(90deg,#c97b63,#7b9e6b)",
       transition: "width 1s"
     }
@@ -1852,11 +1964,11 @@ function App() {
       fontStyle: "normal",
       color: "#999"
     }
-  }, endDate ? `🏁 Day 100: ${endDate.toLocaleDateString('en-GB', {
+  }, endDate ? "\uD83C\uDFC1 Day 100: ".concat(endDate.toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'short',
     year: 'numeric'
-  })}` : "🏁 Set your start date in ⚙ Goals", " \xB7 \uD83C\uDFC6 MacBook Neo"))), tab === "spiritual" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Card, {
+  })) : "🏁 Set your start date in ⚙ Goals", " \xB7 \uD83C\uDFC6 MacBook Neo"))), tab === "spiritual" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Card, {
     title: "Salah",
     icon: "\uD83D\uDD4C",
     extra: /*#__PURE__*/React.createElement("span", {
@@ -1872,14 +1984,19 @@ function App() {
       flexDirection: "column",
       gap: 6
     }
-  }, Object.entries(prayerTimes).map(([n, t]) => /*#__PURE__*/React.createElement(Chk, {
-    key: n,
-    checked: dayData.prayers[n],
-    onChange: () => toggleP(n),
-    label: n,
-    subtitle: `${t} — Dhaka`,
-    accent: "#7b9e6b"
-  }))), pDone === 5 && /*#__PURE__*/React.createElement("div", {
+  }, Object.entries(prayerTimes).map(_ref7 => {
+    let _ref8 = _slicedToArray(_ref7, 2),
+      n = _ref8[0],
+      t = _ref8[1];
+    return /*#__PURE__*/React.createElement(Chk, {
+      key: n,
+      checked: dayData.prayers[n],
+      onChange: () => toggleP(n),
+      label: n,
+      subtitle: "".concat(t, " \u2014 Dhaka"),
+      accent: "#7b9e6b"
+    });
+  })), pDone === 5 && /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 12,
       textAlign: "center",
@@ -2037,7 +2154,7 @@ function App() {
     style: {
       height: "100%",
       borderRadius: 10,
-      width: `${phScore}%`,
+      width: "".concat(phScore, "%"),
       background: phScore === 100 ? "linear-gradient(90deg,#7b9e6b,#9bc48b)" : "linear-gradient(90deg,#c97b63,#d4a373)",
       transition: "width 0.5s"
     }
@@ -2104,7 +2221,7 @@ function App() {
     }, /*#__PURE__*/React.createElement(Chk, {
       checked: dayData.workouts[r.id],
       onChange: () => toggleW(r.id),
-      label: `${ex?.icon || "🏋️"} ${ex?.name || r.id}`,
+      label: "".concat((ex === null || ex === void 0 ? void 0 : ex.icon) || "🏋️", " ").concat((ex === null || ex === void 0 ? void 0 : ex.name) || r.id),
       subtitle: r.target,
       right: /*#__PURE__*/React.createElement("div", {
         style: {
@@ -2269,12 +2386,17 @@ function App() {
       paddingBottom: 3,
       WebkitOverflowScrolling: "touch"
     }
-  }, Object.entries(WORKOUT_LIBRARY).map(([k, v]) => /*#__PURE__*/React.createElement(Pill, {
-    key: k,
-    active: libCat === k,
-    onClick: () => setLC(k),
-    color: v.color
-  }, v.icon, " ", v.label))), /*#__PURE__*/React.createElement(Card, {
+  }, Object.entries(WORKOUT_LIBRARY).map(_ref9 => {
+    let _ref0 = _slicedToArray(_ref9, 2),
+      k = _ref0[0],
+      v = _ref0[1];
+    return /*#__PURE__*/React.createElement(Pill, {
+      key: k,
+      active: libCat === k,
+      onClick: () => setLC(k),
+      color: v.color
+    }, v.icon, " ", v.label);
+  })), /*#__PURE__*/React.createElement(Card, {
     title: WORKOUT_LIBRARY[libCat].label,
     icon: WORKOUT_LIBRARY[libCat].icon
   }, /*#__PURE__*/React.createElement("div", {
@@ -2373,7 +2495,7 @@ function App() {
       gap: 10,
       padding: "12px 14px",
       borderRadius: 14,
-      background: challenge?.id === ex.id ? "rgba(123,158,107,0.08)" : "rgba(0,0,0,0.02)"
+      background: (challenge === null || challenge === void 0 ? void 0 : challenge.id) === ex.id ? "rgba(123,158,107,0.08)" : "rgba(0,0,0,0.02)"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -2389,7 +2511,7 @@ function App() {
       fontWeight: 600,
       color: "#3d2c2c"
     }
-  }, ex.name)), challenge?.id === ex.id ? /*#__PURE__*/React.createElement("span", {
+  }, ex.name)), (challenge === null || challenge === void 0 ? void 0 : challenge.id) === ex.id ? /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 10.5,
       color: "#7b9e6b",
@@ -2506,7 +2628,7 @@ function App() {
     }
   }, MEAL_SLOTS.map(slot => {
     const meal = dayData.meals[slot.id];
-    const lg = meal?.logged;
+    const lg = meal === null || meal === void 0 ? void 0 : meal.logged;
     return /*#__PURE__*/React.createElement("button", {
       key: slot.id,
       onClick: () => {
@@ -2626,7 +2748,7 @@ function App() {
     style: {
       height: "100%",
       borderRadius: 10,
-      width: `${Math.min(100, tCal / 1600 * 100)}%`,
+      width: "".concat(Math.min(100, tCal / 1600 * 100), "%"),
       background: tCal > 1600 ? "linear-gradient(90deg,#e07b7b,#c94444)" : "linear-gradient(90deg,#7b9e6b,#9bc48b)",
       transition: "width 0.5s"
     }
@@ -2700,61 +2822,64 @@ function App() {
       flexDirection: "column",
       gap: 10
     }
-  }, recipeResult.recipes?.map((r, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    style: {
-      padding: 14,
-      borderRadius: 14,
-      background: "rgba(123,158,107,0.04)",
-      border: "1px solid rgba(123,158,107,0.1)"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      color: "#3d2c2c",
-      fontFamily: "'Playfair Display'",
-      marginBottom: 6
-    }
-  }, r.name), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      gap: 8,
-      fontSize: 10.5,
-      color: "#888",
-      marginBottom: 8,
-      flexWrap: "wrap"
-    }
-  }, /*#__PURE__*/React.createElement("span", null, "\uD83D\uDD25 ", r.calories, " kcal"), /*#__PURE__*/React.createElement("span", null, "\uD83D\uDCAA ", r.protein), /*#__PURE__*/React.createElement("span", null, "\u23F1 ", r.prep_time)), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      flexDirection: "column",
-      gap: 5
-    }
-  }, r.steps?.map((s, j) => /*#__PURE__*/React.createElement("div", {
-    key: j,
-    style: {
-      display: "flex",
-      gap: 7,
-      fontSize: 12.5,
-      color: "#555"
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontWeight: 700,
-      color: "#c97b63",
-      flexShrink: 0
-    }
-  }, j + 1, "."), /*#__PURE__*/React.createElement("span", null, s)))), r.tip && /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 8,
-      padding: 9,
-      borderRadius: 9,
-      background: "rgba(212,163,115,0.08)",
-      fontSize: 11.5,
-      color: "#8a6d3b"
-    }
-  }, "\uD83D\uDCA1 ", r.tip)))), recipeResult?.error && /*#__PURE__*/React.createElement("div", {
+  }, (_recipeResult$recipes = recipeResult.recipes) === null || _recipeResult$recipes === void 0 ? void 0 : _recipeResult$recipes.map((r, i) => {
+    var _r$steps;
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        padding: 14,
+        borderRadius: 14,
+        background: "rgba(123,158,107,0.04)",
+        border: "1px solid rgba(123,158,107,0.1)"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 14,
+        fontWeight: 700,
+        color: "#3d2c2c",
+        fontFamily: "'Playfair Display'",
+        marginBottom: 6
+      }
+    }, r.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 8,
+        fontSize: 10.5,
+        color: "#888",
+        marginBottom: 8,
+        flexWrap: "wrap"
+      }
+    }, /*#__PURE__*/React.createElement("span", null, "\uD83D\uDD25 ", r.calories, " kcal"), /*#__PURE__*/React.createElement("span", null, "\uD83D\uDCAA ", r.protein), /*#__PURE__*/React.createElement("span", null, "\u23F1 ", r.prep_time)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        gap: 5
+      }
+    }, (_r$steps = r.steps) === null || _r$steps === void 0 ? void 0 : _r$steps.map((s, j) => /*#__PURE__*/React.createElement("div", {
+      key: j,
+      style: {
+        display: "flex",
+        gap: 7,
+        fontSize: 12.5,
+        color: "#555"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontWeight: 700,
+        color: "#c97b63",
+        flexShrink: 0
+      }
+    }, j + 1, "."), /*#__PURE__*/React.createElement("span", null, s)))), r.tip && /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 8,
+        padding: 9,
+        borderRadius: 9,
+        background: "rgba(212,163,115,0.08)",
+        fontSize: 11.5,
+        color: "#8a6d3b"
+      }
+    }, "\uD83D\uDCA1 ", r.tip));
+  })), (recipeResult === null || recipeResult === void 0 ? void 0 : recipeResult.error) && /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 8,
       padding: 10,
@@ -2853,7 +2978,7 @@ function App() {
       color: "#9f1239",
       marginBottom: 5
     }
-  }, "Last: ", checkups.filter(c => c.period).slice(-1)[0]?.date || "Not recorded"), /*#__PURE__*/React.createElement("div", {
+  }, "Last: ", ((_checkups$filter$slic = checkups.filter(c => c.period).slice(-1)[0]) === null || _checkups$filter$slic === void 0 ? void 0 : _checkups$filter$slic.date) || "Not recorded"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 11.5,
       color: "#be185d",
@@ -2897,7 +3022,7 @@ function App() {
     }
   }, "\uD83D\uDE34 ", /*#__PURE__*/React.createElement("b", null, "Sleep:"), " 10PM\u21925AM = cortisol control")))))), mealModal && /*#__PURE__*/React.createElement(Modal, {
     onClose: () => setMealModal(null),
-    title: `Log ${MEAL_SLOTS.find(s => s.id === mealModal)?.name}`
+    title: "Log ".concat((_MEAL_SLOTS$find = MEAL_SLOTS.find(s => s.id === mealModal)) === null || _MEAL_SLOTS$find === void 0 ? void 0 : _MEAL_SLOTS$find.name)
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
@@ -2906,7 +3031,10 @@ function App() {
     }
   }, /*#__PURE__*/React.createElement("button", {
     className: "bs",
-    onClick: () => fileRef.current?.click(),
+    onClick: () => {
+      var _fileRef$current;
+      return (_fileRef$current = fileRef.current) === null || _fileRef$current === void 0 ? void 0 : _fileRef$current.click();
+    },
     style: {
       flex: 1
     }
@@ -2946,7 +3074,7 @@ function App() {
       color: "#7b9e6b",
       marginBottom: 5
     }
-  }, "AI Analysis:"), photoResult.items?.map((item, i) => /*#__PURE__*/React.createElement("div", {
+  }, "AI Analysis:"), (_photoResult$items = photoResult.items) === null || _photoResult$items === void 0 ? void 0 : _photoResult$items.map((item, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
     style: {
       fontSize: 12,
@@ -2969,7 +3097,7 @@ function App() {
       display: "flex",
       justifyContent: "space-between"
     }
-  }, /*#__PURE__*/React.createElement("span", null, "Total"), /*#__PURE__*/React.createElement("span", null, photoResult.total_calories, " kcal"))), photoResult?.error && /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", null, "Total"), /*#__PURE__*/React.createElement("span", null, photoResult.total_calories, " kcal"))), (photoResult === null || photoResult === void 0 ? void 0 : photoResult.error) && /*#__PURE__*/React.createElement("div", {
     style: {
       padding: 9,
       borderRadius: 10,
@@ -3238,7 +3366,7 @@ function App() {
       d.setDate(d.getDate() + 1);
       setProfile(p => ({
         ...p,
-        startDate: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+        startDate: "".concat(d.getFullYear(), "-").concat(String(d.getMonth() + 1).padStart(2, '0'), "-").concat(String(d.getDate()).padStart(2, '0'))
       }));
     },
     style: {
@@ -3372,7 +3500,10 @@ function App() {
       fontWeight: 600
     }
   }, "\u2B07 Export Backup"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => importRef.current?.click(),
+    onClick: () => {
+      var _importRef$current;
+      return (_importRef$current = importRef.current) === null || _importRef$current === void 0 ? void 0 : _importRef$current.click();
+    },
     style: {
       flex: 1,
       padding: "10px",
@@ -3439,50 +3570,55 @@ function App() {
       gap: 5,
       WebkitOverflowScrolling: "touch"
     }
-  }, Object.entries(WORKOUT_LIBRARY).map(([cat, data]) => data.exercises.filter(ex => !myRoutine.find(r => r.id === ex.id)).map(ex => /*#__PURE__*/React.createElement("button", {
-    key: ex.id,
-    onClick: () => {
-      addToRoutine(ex.id, ex.defaultTarget);
-      setAEM(false);
-    },
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: 9,
-      padding: "9px 12px",
-      borderRadius: 12,
-      border: "none",
-      background: "rgba(0,0,0,0.02)",
-      cursor: "pointer",
-      width: "100%",
-      textAlign: "left"
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 16
-    }
-  }, ex.icon), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12.5,
-      fontWeight: 600,
-      color: "#3d2c2c"
-    }
-  }, ex.name), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10.5,
-      color: "#999"
-    }
-  }, data.label)), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 10.5,
-      color: "#c97b63",
-      fontWeight: 600
-    }
-  }, "+"))))), /*#__PURE__*/React.createElement("button", {
+  }, Object.entries(WORKOUT_LIBRARY).map(_ref1 => {
+    let _ref10 = _slicedToArray(_ref1, 2),
+      cat = _ref10[0],
+      data = _ref10[1];
+    return data.exercises.filter(ex => !myRoutine.find(r => r.id === ex.id)).map(ex => /*#__PURE__*/React.createElement("button", {
+      key: ex.id,
+      onClick: () => {
+        addToRoutine(ex.id, ex.defaultTarget);
+        setAEM(false);
+      },
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 9,
+        padding: "9px 12px",
+        borderRadius: 12,
+        border: "none",
+        background: "rgba(0,0,0,0.02)",
+        cursor: "pointer",
+        width: "100%",
+        textAlign: "left"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 16
+      }
+    }, ex.icon), /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12.5,
+        fontWeight: 600,
+        color: "#3d2c2c"
+      }
+    }, ex.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10.5,
+        color: "#999"
+      }
+    }, data.label)), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 10.5,
+        color: "#c97b63",
+        fontWeight: 600
+      }
+    }, "+")));
+  })), /*#__PURE__*/React.createElement("button", {
     onClick: () => {
       setAEM(false);
       setCEM(true);
@@ -3547,7 +3683,7 @@ function App() {
     className: "bp",
     disabled: !customEx.name,
     onClick: () => {
-      const id = `custom_${Date.now()}`;
+      const id = "custom_".concat(Date.now());
       WORKOUT_LIBRARY.strength.exercises.push({
         id,
         name: customEx.name,
@@ -3628,7 +3764,6 @@ function App() {
 ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
 } catch (err) {
   document.getElementById('root').innerHTML='<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:30px;text-align:center;font-family:sans-serif"><div><div style="font-size:44px;margin-bottom:14px">⚠️</div><div style="font-size:18px;font-weight:700;color:#3d2c2c;margin-bottom:8px">Something went wrong</div><div style="font-size:13px;color:#888;max-width:320px;word-break:break-word">'+(err&&err.message?err.message:err)+'</div></div></div>';
-  console.error(err);
 }
 </script>
 <script>
